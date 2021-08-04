@@ -8,6 +8,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
 
     const loginUser = async (e) => {
+        console.log(e);
         e.preventDefault();
 
         const res = await fetch("https://e-59d73-default-rtdb.firebaseio.com/e-secure.json", {
@@ -46,14 +47,14 @@ const Login = () => {
 
                 <div class="row">
                     <div class="col-md-6" id="waves">
-                        <img class="wave" src={wave} />
+                        <img class="wave" src={wave} alt="svg" />
                         <div class="img">
-                            <img src={undraw_file_searching_duff} />
+                            <img src={undraw_file_searching_duff} alt="svg" />
                         </div>
                     </div>
                     <div class="col-md-6" id="main-content">
-                        <img class="mobile" src={undraw_file_searching_duff} />
-                        <h2>E-Secure</h2>
+                        <img class="mobile" src={undraw_file_searching_duff} alt="svg" />
+                        <h2>Login</h2>
                         <form class="url-form" method="POST">
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Email</label>
@@ -64,14 +65,14 @@ const Login = () => {
                                 <input type="text" name="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="off" required className="form-control" id="exampleInputEmail1" />
                             </div>
 
-                            <button type="submit" onClick={loginUser} value="login" className="btn btn-primary">Submit</button>
+                            <button type="submit" onClick={loginUser} value="login" className="submit-button">Submit</button>
 
 
 
                         </form>
 
                         <div class="footer">
-                            Made with <font color="red">♥</font> by <a target="_blank" href="https://github.com/Ritwik880">ritwik </a>
+                            Made with <font color="red">♥</font> by <a  href="https://github.com/Ritwik880">ritwik </a>
                         </div>
                     </div>
 

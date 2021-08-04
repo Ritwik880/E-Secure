@@ -9,13 +9,13 @@ const Main = () => {
 
 <div class="row">
     <div class="col-md-6" id="waves">
-        <img class="wave" src={wave} />
+        <img class="wave" src={wave}alt="svg" />
         <div class="img">
-            <img src={undraw_file_searching_duff} />
+            <img src={undraw_file_searching_duff}alt="svg" />
         </div>
     </div>
     <div class="col-md-6" id="main-content">
-        <img class="mobile" src={undraw_file_searching_duff} />
+        <img class="mobile" src={undraw_file_searching_duff} alt="svg"/>
         <h2>Welcome User!</h2>
         <form class="url-form" action="/">
            
@@ -24,7 +24,7 @@ const Main = () => {
         </form>
 
         <div class="footer">
-            Made with <font color="red">♥</font> by <a target="_blank" href="https://github.com/Ritwik880">ritwik </a>
+            Made with <font color="red">♥</font> by <a href="https://github.com/Ritwik880">ritwik </a>
         </div>
     </div>
 

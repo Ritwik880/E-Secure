@@ -9,13 +9,13 @@ const Home = () => {
 
             <div class="row">
                 <div class="col-md-6" id="waves">
-                    <img class="wave" src={wave} />
+                    <img class="wave" src={wave} alt="svg" />
                     <div class="img">
-                        <img src={undraw_file_searching_duff} />
+                        <img src={undraw_file_searching_duff} alt="svg" />
                     </div>
                 </div>
                 <div class="col-md-6" id="main-content">
-                    <img class="mobile" src={undraw_file_searching_duff} />
+                    <img class="mobile" src={undraw_file_searching_duff} alt="svg" />
                     <h2>E-Secure</h2>
                     <form class="url-form" action="/signup">
                         <p>A strong security system by which the user can authenticate to a particular web page by scanning QR code or generating Otp system.</p>
@@ -23,7 +23,7 @@ const Home = () => {
                     </form>
 
                     <div class="footer">
-                        Made with <font color="red">♥</font> by <a target="_blank" href="https://github.com/Ritwik880">ritwik </a>
+                        Made with <font color="red">♥</font> by <a  href="https://github.com/Ritwik880">ritwik </a>
                     </div>
                 </div>
 

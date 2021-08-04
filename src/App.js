@@ -15,6 +15,7 @@ import { Route } from 'react-router-dom';
 
 
 function App() {
+ 
   const history = useHistory();
   const [viewOtpForm, setViewOtpForm] = useState(false);
   const [user, setUser] = useState(false);

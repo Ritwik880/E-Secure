@@ -4,6 +4,7 @@ import wave from '../image/wave.png';
 import undraw_file_searching_duff from '../image/undraw_file_searching_duff.svg';
 
 const SignUp = () => {
+    let response;
     const history = useHistory();
     const [user, setUser] = useState({
 
@@ -24,6 +25,10 @@ const SignUp = () => {
         e.preventDefault();
 
         const { email, number, password, cpassword } = user;
+
+        if ( !email ||!number || !password || !cpassword) {
+            return response.JSON({ error: "Please fill all the data" });
+        }
 
         const res = await fetch("https://e-59d73-default-rtdb.firebaseio.com/e-secure.json", {
             method: "POST",
@@ -58,14 +63,14 @@ const SignUp = () => {
 
                 <div class="row">
                     <div class="col-md-6" id="waves">
-                        <img class="wave" src={wave} />
+                        <img class="wave" src={wave} alt="svg" />
                         <div class="img">
-                            <img src={undraw_file_searching_duff} />
+                            <img src={undraw_file_searching_duff} alt="svg" />
                         </div>
                     </div>
                     <div class="col-md-6" id="main-content">
-                        <img class="mobile" src={undraw_file_searching_duff} />
-                        <h2>E-Secure</h2>
+                        <img class="mobile" src={undraw_file_searching_duff} alt="svg" />
+                        <h2>Sign Up</h2>
                         <form class="url-form" method="POST">
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Email</label>
@@ -89,7 +94,7 @@ const SignUp = () => {
                         </form>
 
                         <div class="footer">
-                            Made with <font color="red">♥</font> by <a target="_blank" href="https://github.com/Ritwik880">ritwik </a>
+                            Made with <font color="red">♥</font> by <a href="https://github.com/Ritwik880">ritwik </a>
                         </div>
                     </div>
 
