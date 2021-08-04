@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './App.css';
+
 
 import firebase from 'firebase';
 import "firebase/auth";
 
 import Home from './components/Home';
+import SignUp from './components/Signup';
 import Login from './components/Login';
 import Otp from './components/Otp';
 import Main from './components/Main';
@@ -102,6 +103,11 @@ function App() {
           <Route exact path="/">
           <div id="recaptcha-container"></div>
             <Home />
+          </Route>
+          
+          <Route path="/signup">
+          <div id="recaptcha-container"></div>
+            <SignUp />
           </Route>
 
           <Route path="/login">

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
 import '../style.css';
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-
+import wave from '../image/wave.png';
+import undraw_file_searching_duff from '../image/undraw_file_searching_duff.svg';
 const Otp = ({ loginSubmit, otpSubmit, viewOtpForm }) => {
     const [show, setShow] = useState(false);
 
@@ -11,39 +11,31 @@ const Otp = ({ loginSubmit, otpSubmit, viewOtpForm }) => {
     const handleShow = () => setShow(true);
     return (
         <>
+            <section class="form-section">
 
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container-fluid">
-                    <NavLink class="navbar-brand" to="#">E-Secure</NavLink>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <NavLink class="nav-link" to="/otp">Otp</NavLink>
-                            </li>
-                        </ul>
+                <div class="row">
+                    <div class="col-md-6" id="waves">
+                        <img class="wave" src={wave} />
+                        <div class="img">
+                            <img src={undraw_file_searching_duff} />
+                        </div>
                     </div>
-                </div>
-            </nav>
-
-            <div className="box ">
-                <div class="col-md-6">
-                    <div class="h-100 p-5 text-white bg-dark rounded-3">
+                    <div class="col-md-6" id="main-content">
+                        <img class="mobile" src={undraw_file_searching_duff} />
                         <h2>Choose the method</h2>
-                        <p>Please enter the phone number for otp verification (Number which is used at the time of SignUp) Or scan QR code.</p>
-                        <Button onClick={handleShow} class="btn btn-outline-light mx-2" type="button">Send OTP</Button>
+                        <p>Please enter the phone number for otp verification (Number which is used at the time of SignUp) Or scan QR code</p>
+                     
+                        <button onClick={handleShow} type="submit" class="submit-button mx-2">Otp Generate</button>
+                        <button type="submit" class="submit-button mx-2">Scan Qr</button>
                         {!viewOtpForm ? (
                             <Modal show={show} onHide={handleClose}>
                                 <Modal.Header closeButton>
                                     <Modal.Title>Enter your number</Modal.Title>
                                 </Modal.Header>
-                                {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
-                                {/* <input type="number" name="number" autoComplete="off" required className="form-control" id="exampleInputEmail1" aria-describedby="email Help" /> */}
+
                                 <form id="loginForm" onSubmit={loginSubmit}>
                                     <div className="input-field">
-                                       
+
                                         <input
                                             type="text"
                                             placeholder="Phone"
@@ -54,10 +46,10 @@ const Otp = ({ loginSubmit, otpSubmit, viewOtpForm }) => {
 
 
                                     <Modal.Footer>
-                                        <Button variant="secondary" onClick={handleClose}>
+                                        <Button class="submit-button" variant="secondary" onClick={handleClose}>
                                             Close
                                         </Button>
-                                        <Button variant="primary" type="submit" onClick={handleClose}>
+                                        <Button variant="primary" class="submit-button" type="submit" onClick={handleClose}>
                                             Send Otp
                                         </Button>
                                     </Modal.Footer>
@@ -95,15 +87,17 @@ const Otp = ({ loginSubmit, otpSubmit, viewOtpForm }) => {
                             </Modal>
                         )}
 
-                        <a href="/qrcode" class="btn btn-outline-light mx-2" type="button">Scan QR</a>
+                        <div class="footer">
+                            Made with <font color="red">♥</font> by <a target="_blank" href="https://github.com/Ritwik880">ritwik </a>
+                        </div>
                     </div>
+
                 </div>
-            </div>
-            <footer>
-                <p >2021 |
-                    All rights reserved
-                </p>
-            </footer>
+
+            </section >
+
+
+
 
         </>
     )
