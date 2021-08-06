@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 import '../style.css';
 import { Modal } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
 import wave from '../image/wave.png';
-
+import QRCode from 'qrcode.react';
 
 import undraw_file_searching_duff from '../image/undraw_file_searching_duff.svg';
 const Otp = ({ loginSubmit, otpSubmit, viewOtpForm }) => {
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
-   
+
 
     // Modal 1
     const handleClose = () => setShow(false);
@@ -17,8 +16,30 @@ const Otp = ({ loginSubmit, otpSubmit, viewOtpForm }) => {
 
     // Modal 2
     const handleC = () => setShow1(false);
-    const handleS= () => setShow1(true);
-   
+    const handleS = () => setShow1(true);
+
+    const [inputText, setInputText] = useState('');
+    const [qrCodeText, setQRCodeText] = useState('');
+
+    // generate QR code
+    const generateQRCode = () => {
+        setQRCodeText(inputText);
+    }
+
+    // download QR code
+    const downloadQRCode = () => {
+        const qrCodeURL = document.getElementById('qrCodeEl')
+            .toDataURL("image/png")
+            .replace("image/png", "image/octet-stream");
+        console.log(qrCodeURL)
+        let aEl = document.createElement("a");
+        aEl.href = qrCodeURL;
+        aEl.download = "QR_Code.png";
+        document.body.appendChild(aEl);
+        aEl.click();
+        document.body.removeChild(aEl);
+    }
+
     return (
         <>
             <section class="form-section">
@@ -37,11 +58,39 @@ const Otp = ({ loginSubmit, otpSubmit, viewOtpForm }) => {
 
                         <button onClick={handleShow} type="submit" class="submit-button mx-2">Otp Generate</button>
                         <button onClick={handleS} type="submit" class="submit-button mx-2">Scan Qr</button>
+
+
+
                         <Modal show={show1} onHide={handleC}>
                             <Modal.Header closeButton>
-                                <Modal.Title>Enter your Email below</Modal.Title>
+                                <Modal.Title>Enter your Link below</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                            <div className="qr-input">
+                                <input
+                                    type="text"
+                                    placeholder="localhost:3000"
+                                    value={inputText}
+                                    onChange={e => setInputText(e.target.value)}
+                                />
+                                <input
+                                    type="button"
+                                    value="Generate"
+                                    onClick={generateQRCode}
+                                />
+                            </div>
+                            <QRCode
+                                className="code"
+                                id="qrCodeEl"
+                                size={100}
+                                value={qrCodeText}
+                            />
+                            <br />
+                            <input
+                                type="button"
+                                className="download-btn"
+                                value="Download"
+                                onClick={downloadQRCode}
+                            />
                             <Modal.Footer>
                                 <button class="submit-button" variant="secondary" onClick={handleC}>
                                     Close
@@ -52,6 +101,7 @@ const Otp = ({ loginSubmit, otpSubmit, viewOtpForm }) => {
                             </Modal.Footer>
                         </Modal>
 
+                        {/* Otp Validation Starts */}
                         {!viewOtpForm ? (
                             <Modal show={show} onHide={handleClose}>
                                 <Modal.Header closeButton>
@@ -62,7 +112,7 @@ const Otp = ({ loginSubmit, otpSubmit, viewOtpForm }) => {
                                     <div className="input-field">
 
                                         <input
-                                            
+
                                             type="text"
                                             placeholder="Phone"
                                             name="phone"
@@ -72,10 +122,10 @@ const Otp = ({ loginSubmit, otpSubmit, viewOtpForm }) => {
 
 
                                     <Modal.Footer>
-                                        <button class="submit-button" class="submit-button" variant="secondary" onClick={handleClose}>
+                                        <button class="submit-button" variant="secondary" onClick={handleClose}>
                                             Close
                                         </button>
-                                        <button class="submit-button" variant="primary" class="submit-button" type="submit" onClick={handleClose}>
+                                        <button variant="primary" class="submit-button" type="submit" onClick={handleClose}>
                                             Send Otp
                                         </button>
                                     </Modal.Footer>
@@ -102,16 +152,17 @@ const Otp = ({ loginSubmit, otpSubmit, viewOtpForm }) => {
 
 
                                     <Modal.Footer>
-                                        <Button variant="secondary" class="submit-button" onClick={handleClose}>
+                                        <button variant="secondary" class="submit-button" onClick={handleClose}>
                                             Close
-                                        </Button>
-                                        <Button variant="primary" class="submit-button" type="submit" onClick={handleClose}>
+                                        </button>
+                                        <button variant="primary" class="submit-button" type="submit" onClick={handleClose}>
                                             Verify OTP
-                                        </Button>
+                                        </button>
                                     </Modal.Footer>
                                 </form>
                             </Modal>
                         )}
+                        {/* Otp validation ends */}
 
                         <div class="footer">
                             Made with <font color="red">♥</font> by <a href="https://github.com/Ritwik880">ritwik </a>

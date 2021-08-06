@@ -72,6 +72,9 @@ button:hover {
     font-family: 'Comic Neue', cursive;
     font-weight: bold;
 }
+input[type='button']{
+    margin-top: 3px;
+}
 /* 
 input {
     background: #f0f0f0;
@@ -94,6 +97,12 @@ input {
     
 }
 input{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+.code{
+   margin-top: 6px;
     display: block;
     margin-right: auto;
     margin-left: auto;
@@ -199,6 +208,12 @@ input{
         display: block;
         height: 5%;
         margin: 0 auto;
+    }
+    input[type='text']{
+        width: auto;
+    }
+    input[type='button']{
+        width: auto;
     }
 }
 

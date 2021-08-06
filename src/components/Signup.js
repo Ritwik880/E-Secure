@@ -88,7 +88,9 @@ const SignUp = () => {
                                 <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
                                 <input type="text" name="cpassword" value={user.cpassword} onChange={getUserData} autoComplete="off" required className="form-control" id="exampleInputEmail1" />
                             </div>
-                            <button type="submit" onClick={postData} className="submit-button">Submit</button>
+                            <button type="submit" onClick={postData} className="submit-button">Submit</button>  
+
+                          
 
 
                         </form>
